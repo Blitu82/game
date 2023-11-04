@@ -7,15 +7,27 @@ const capitals = [
   { name: 'Tenerife', coordinates: [650, 400] },
 ];
 
-let cityIndex = 0;
+// let cityIndex = 0;
 
 const geoGame = new GeoGame(capitals);
+
+const startButton = document.getElementById('start-button');
+startButton.addEventListener('click', () => {
+  geoGame.start();
+});
+
+/* window.onload = function () {
+  const startButton = document.getElementById('start-button');
+  startButton.addEventListener('click', () => {
+    geoGame.start();
+  });
+}; */
 
 const pickedCities = geoGame.shuffleCapitals();
 
 const map = document.getElementById('map'); //we can later access the continent image depending on the city
 
-function displayCity() {
+/* function displayCity() {
   console.log(`Where is ${pickedCities[cityIndex].name}?`);
 
   map.addEventListener('click', waitingForClick);
@@ -58,6 +70,6 @@ function displayCity() {
     map.removeEventListener('click', waitingForClick);
     setTimeout(displayCity, 3000);
   }
-}
+} */
 
-displayCity();
+geoGame.displayCity();
