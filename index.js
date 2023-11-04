@@ -2,36 +2,43 @@
 const capitals = [
   { name: 'Lisbon', coordinates: [39.620060790273556, 615.2669270833334] },
   { name: 'Madrid', coordinates: [534.870820668693, 414.1796875] },
-  { name: 'Porto', coordinates: [534.870820668693, 414.1796875] },
-  { name: 'Barcelona', coordinates: [534.870820668693, 414.1796875] },
-  { name: 'Tenerife', coordinates: [534.870820668693, 414.1796875] },
+  { name: 'Porto', coordinates: [100, 100] },
+  { name: 'Barcelona', coordinates: [700, 100] },
+  { name: 'Tenerife', coordinates: [650, 400] },
 ];
+
+let cityIndex = 0;
 
 const geoGame = new GeoGame(capitals);
 
 const pickedCities = geoGame.shuffleCapitals();
 
-const image = document.getElementById('img'); //we can later access the continent image depending on the city
+const map = document.getElementById('map'); //we can later access the continent image depending on the city
 
-pickedCities.forEach(city => {
-  console.log(`Where is ${city.name}?`);
-  image.addEventListener('click', event => {
+function displayCity() {
+  console.log(`Where is ${pickedCities[cityIndex].name}?`);
+
+  map.addEventListener('click', waitingForClick);
+
+  function waitingForClick(event) {
     // the (0,0) point is top-left corner of the image
 
     const x = event.offsetX;
     const y = event.offsetY;
 
-    const imageWidth = image.width;
-    const imageHeight = image.height;
+    const mapWidth = map.width;
+    const mapHeight = map.height;
 
-    const scaledX = (x / imageWidth) * image.naturalWidth;
-    const scaledY = (y / imageHeight) * image.naturalHeight;
+    const scaledX = (x / mapWidth) * map.naturalWidth;
+    const scaledY = (y / mapHeight) * map.naturalHeight;
 
     const userClick = [scaledX, scaledY];
 
-    const distance = geoGame.calculateDist(city, userClick);
+    const distance = geoGame.calculateDist(pickedCities[0], userClick);
 
-    console.log(`The distance to ${city.name} is ${distance}`);
+    console.log(
+      `The distance to ${pickedCities[cityIndex].name} is ${distance}`
+    );
 
     console.log(`x: ${scaledX} and y: ${scaledY}`);
 
@@ -42,7 +49,15 @@ pickedCities.forEach(city => {
       `This is the number of Capitals Clicked: ${geoGame.capitalsClicked}`
     );
 
-    pickedCities.shift(city);
+    //pickedCities.shift();
+    cityIndex++;
     console.log(pickedCities);
-  });
-});
+    if (geoGame.checkIfFinished()) {
+      return console.log('Game Over');
+    }
+    map.removeEventListener('click', waitingForClick);
+    setTimeout(displayCity, 3000);
+  }
+}
+
+displayCity();
