@@ -3,6 +3,11 @@ class GeoGame {
     this.startScreen = document.getElementById('game-intro');
     this.gameScreen = document.getElementById('game-container');
     this.gameEndScreen = document.getElementById('game-end');
+    this.map = document.getElementById('map');
+    this.cityGuess = document.getElementById('city-guess');
+    this.scoreElement = document.getElementById('score');
+    this.citiesClickedElement = document.getElementById('cities-clicked');
+
     this.capitals = capitals;
     this.cityIndex = 0;
     this.pickedCapitals = [];
@@ -40,47 +45,6 @@ class GeoGame {
     return dist;
   }
 
-  displayCity() {
-    console.log(`Where is ${this.pickedCapitals[this.cityIndex].name}?`);
-
-    map.addEventListener('click', waitingForClick);
-
-    function waitingForClick(event) {
-      const x = event.offsetX;
-      const y = event.offsetY;
-      const mapWidth = map.width;
-      const mapHeight = map.height;
-      const scaledX = (x / mapWidth) * map.naturalWidth;
-      const scaledY = (y / mapHeight) * map.naturalHeight;
-      const userClick = [scaledX, scaledY];
-      const distance = this.calculateDist(
-        this.pickedCapitals[this.cityIndex],
-        userClick
-      );
-
-      console.log(
-        `The distance to ${
-          this.pickedCapitals[this.cityIndex].name
-        } is ${distance}`
-      );
-
-      this.scoreUpdate(distance);
-
-      console.log(`This is the score: ${this.score}`);
-      console.log(
-        `This is the number of Capitals Clicked: ${this.capitalsClicked}`
-      );
-
-      this.cityIndex++;
-      console.log(this.pickedCapitals);
-      if (this.checkIfFinished()) {
-        return console.log('Game Over');
-      }
-      map.removeEventListener('click', waitingForClick);
-      setTimeout(this.displayCity(), 3000);
-    }
-  }
-
   scoreUpdate(dist) {
     if (dist <= this.maxDist1) {
       this.score += 2;
@@ -96,5 +60,47 @@ class GeoGame {
     } else {
       return false;
     }
+  }
+
+  displayCity(pickedCities) {
+    this.cityGuess.innerHTML = `Where is ${pickedCities[this.cityIndex].name}?`;
+
+    const waitingForClick = event => {
+      const x = event.offsetX;
+      const y = event.offsetY;
+      const mapWidth = this.map.width;
+      const mapHeight = this.map.height;
+      const scaledX = (x / mapWidth) * this.map.naturalWidth;
+      const scaledY = (y / mapHeight) * this.map.naturalHeight;
+      const userClick = [scaledX, scaledY];
+      const distance = this.calculateDist(
+        pickedCities[this.cityIndex],
+        userClick
+      );
+      console.log(
+        `The distance to ${pickedCities[this.cityIndex].name} is ${distance}`
+      );
+
+      this.scoreUpdate(distance);
+
+      //console.log(`This is the score: ${this.score}`);
+      this.scoreElement.innerHTML = this.score;
+      //console.log(
+      //  `This is the number of Capitals Clicked: ${this.capitalsClicked}`
+      //);
+
+      this.citiesClickedElement.innerHTML = this.capitalsClicked;
+
+      this.cityIndex++;
+
+      if (this.checkIfFinished()) {
+        return console.log('Game Over');
+      }
+      map.removeEventListener('click', waitingForClick);
+      setTimeout(() => {
+        this.displayCity(pickedCities);
+      }, 3000);
+    };
+    map.addEventListener('click', waitingForClick);
   }
 }
