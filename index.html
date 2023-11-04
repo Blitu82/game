@@ -7,8 +7,41 @@
     <title>Figuring out coordinates</title>
   </head>
   <body>
+    <section id="game-intro">
+      <img src="img\logo.png" alt="" class="logo-img" />
+      <br />
+      <button id="start-button">Start Game</button>
+      <div class="instructions">
+        <h2>Instructions</h2>
+        <p>Guess world capitals by clicking on the map. Score system:</p>
+        <ul>
+          <li>2 points if you click in the correct location.</li>
+          <li>1 point if you get close enough.</li>
+          <li>0 points if you dont get the location right.</li>
+        </ul>
+        <p>Game ends after clicking 5 cities.</p>
+      </div>
+    </section>
     <!-- <img id="img" src="peninsula-iberica.jpeg" alt="map-of-iberia" /> -->
-    <img id="map" src="img\lisbon_madrid.png" alt="map-of-iberia" />
+    <section id="game-container">
+      <div id="city-name">
+        <h2>City Name to Guess</h2>
+      </div>
+      <div id="score-board">
+        <p>Score:<span id="score">0</span></p>
+        <p>Cities Clicked:<span id="cities-clicked">0</span></p>
+      </div>
+
+      <img id="map" src="img\lisbon_madrid.png" alt="map-of-iberia" />
+    </section>
+
+    <section id="game-end">
+      <div id="score-board">
+        <p>Final Score:<span id="final-score">0</span></p>
+        <br />
+        <button id="restart-button">Restart</button>
+      </div>
+    </section>
     <script src="game.js"></script>
     <script src="index.js"></script>
   </body>

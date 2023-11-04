@@ -1,4 +1,70 @@
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+}
+
+h2 {
+  font-size: 100px;
+}
+
 #img {
   width: 100%;
   height: 100%;
+}
+
+#game-intro {
+  height: 100%;
+  background: url('img/start_screen.png') no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-img {
+  width: 10%;
+  height: auto;
+}
+
+body button {
+  font-size: 50px;
+  /* background-color: blue; */
+  border: 2px solid black;
+  padding: 20px 40px;
+  box-shadow: 0;
+  border-radius: 10px;
+  width: 10%;
+  height: auto;
+}
+
+.instructions {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.instructions > p,
+ul {
+  font-size: 30px;
+}
+
+#game-container {
+  display: none;
+  width: 100vw;
+  padding: 20px 0px;
+  justify-content: center;
+}
+
+#game-end {
+  display: none;
+  align-content: center;
+  padding: 20px 0px;
+  overflow: hidden;
+  position: relative;
+  background-image: url(../images/road.png);
+  background-size: cover;
+  animation: slide 5s linear infinite;
 }
