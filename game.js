@@ -88,6 +88,7 @@ class GeoGame {
       const scaledX = (x / mapWidth) * this.map.naturalWidth;
       const scaledY = (y / mapHeight) * this.map.naturalHeight;
       const userClick = [scaledX, scaledY];
+      console.log(`The coordinates are x = ${scaledX} and y =  ${scaledY}`);
       const distance = this.calculateDist(
         pickedCities[this.cityIndex],
         userClick

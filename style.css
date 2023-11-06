@@ -129,24 +129,47 @@ body {
 
 #game-container {
   display: none;
-  width: 100vw;
-  padding: 20px 0px;
+  width: 100%;
+  height: auto;
+  /* padding: 20px 0px; */
+  position: relative;
+  z-index: 0;
+}
+
+.image {
+  /* width: 100%; */
+  /* border: 2px solid black; */
+  /* background-color: black; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
 }
 
 #city-name {
+  background-color: white;
   border: 2px solid black;
   width: max-content;
+  position: relative;
+  top: 40px;
+  left: 40px;
+  border-radius: 50px;
+  padding: 20px;
+  z-index: 1;
 }
 
 #score-board {
   width: max-content;
   border: 2px solid black;
-}
-
-.img {
-  width: 100%;
-  border: 2px solid black;
-  background-color: black;
+  position: relative;
+  top: -50px;
+  left: 1500px;
+  background-color: white;
+  border-radius: 50px;
+  padding: 20px;
+  z-index: 1;
 }
 
 /* ----------- Game End ------------ */
