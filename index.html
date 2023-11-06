@@ -4,22 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Figuring out coordinates</title>
+    <title>GeoQuiz</title>
   </head>
   <body>
     <section id="game-intro">
-      <img src="img\logo.png" alt="" class="logo-img" />
+      <img src="img\logo_2.png" alt="" class="logo-img" />
       <br />
-      <button id="start-button">Start Game</button>
+      <button id="start-button">START GAME</button>
+    </section>
+    <section id="game-instructions">
       <div class="instructions">
         <h2>Instructions</h2>
-        <p>Guess world capitals by clicking on the map. Score system:</p>
+        <p>Guess the location of World capitals by clicking on the map</p>
+        <p>Score system:</p>
         <ul>
-          <li>2 points if you click in the correct location.</li>
-          <li>1 point if you get close enough.</li>
-          <li>0 points if you dont get the location right.</li>
+          <li>2 points if you click in the correct location</li>
+          <li>1 point if you get close enough</li>
+          <li>0 points if you don't get the location right</li>
         </ul>
-        <p>Game ends after clicking 5 cities.</p>
+        <p>Game ends after clicking 5 cities</p>
+        <br />
+        <button id="next-button">NEXT</button>
       </div>
     </section>
     <!-- <img id="img" src="peninsula-iberica.jpeg" alt="map-of-iberia" /> -->
@@ -32,7 +37,9 @@
         <p>Cities Clicked:<span id="cities-clicked">0</span></p>
       </div>
 
-      <img id="map" src="img\lisbon_madrid.png" alt="map-of-iberia" />
+      <div class="image">
+        <img id="map" src="img\lisbon_madrid.png" alt="map-of-iberia" />
+      </div>
     </section>
 
     <section id="game-end">

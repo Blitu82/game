@@ -10,8 +10,14 @@ const capitals = [
 const geoGame = new GeoGame(capitals);
 
 const startButton = document.getElementById('start-button');
+const nexButton = document.getElementById('next-button');
+
 startButton.addEventListener('click', () => {
   geoGame.start();
+});
+
+nexButton.addEventListener('click', () => {
+  geoGame.next();
 });
 
 const pickedCities = geoGame.shuffleCapitals();

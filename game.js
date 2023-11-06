@@ -1,6 +1,7 @@
 class GeoGame {
   constructor(capitals) {
     this.startScreen = document.getElementById('game-intro');
+    this.gameIntructions = document.getElementById('game-instructions');
     this.gameScreen = document.getElementById('game-container');
     this.gameEndScreen = document.getElementById('game-end');
     this.map = document.getElementById('map');
@@ -18,10 +19,21 @@ class GeoGame {
     this.maxDist2 = 30;
   }
 
+  // To go from start page to the instructions page
+
   start() {
     this.startScreen.style.display = 'none';
+    this.gameIntructions.style.display = 'block';
+  }
+
+  // To go from the instructions page to the game
+
+  next() {
+    this.gameIntructions.style.display = 'none';
     this.gameScreen.style.display = 'block';
   }
+
+  // Takes the original array with all the cities and puts 5 random ones in a new array
 
   shuffleCapitals() {
     if (this.capitals) {
@@ -32,11 +44,7 @@ class GeoGame {
     }
   }
 
-  //   pickCity() {
-  //     const pickedCity = this.pickedCapitals[0];
-  //     this.pickedCapitals.shift();
-  //     return pickedCity;
-  //   }
+  // Calculates the distance between the user's click and the actual city coordinates
 
   calculateDist(pickedCity, userClick) {
     const deltaX = userClick[0] - pickedCity.coordinates[0];
@@ -44,6 +52,8 @@ class GeoGame {
     const dist = Math.sqrt(deltaX ** 2 + deltaY ** 2);
     return dist;
   }
+
+  // Updates this.score and this.capitalsClicked
 
   scoreUpdate(dist) {
     if (dist <= this.maxDist1) {
@@ -54,6 +64,9 @@ class GeoGame {
     this.capitalsClicked++;
   }
 
+  // Checks if the user has gone through all cities in the array
+  // If so the game ends
+
   checkIfFinished() {
     if (this.capitalsClicked === this.numberOfCapitals) {
       return true;
@@ -61,6 +74,8 @@ class GeoGame {
       return false;
     }
   }
+
+  // Main function that runs through the array and asks the user to click in a given city.
 
   displayCity(pickedCities) {
     this.cityGuess.innerHTML = `Where is ${pickedCities[this.cityIndex].name}?`;
