@@ -43,6 +43,8 @@ nexButton.addEventListener('click', () => {
   geoGame.next();
 });
 
+geoGame.citiesToClick.innerHTML = geoGame.numberOfCapitals;
+
 const pickedCities = geoGame.shuffleCapitals();
 
 geoGame.displayCity(pickedCities);

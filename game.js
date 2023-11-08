@@ -6,6 +6,7 @@ class GeoGame {
     this.gameEndScreen = document.getElementById('game-end');
     this.map = document.getElementById('map');
     this.cityGuess = document.getElementById('city-guess');
+    this.citiesToClick = document.getElementById('cities-to-click');
     this.scoreElement = document.getElementById('score');
     this.endScoreElement = document.getElementById('end-score');
     this.citiesClickedElement = document.getElementById('cities-clicked');
@@ -13,7 +14,7 @@ class GeoGame {
     this.capitals = capitals;
     this.cityIndex = 0;
     this.pickedCapitals = [];
-    this.numberOfCapitals = 5;
+    this.numberOfCapitals = 10;
     this.capitalsClicked = 0;
     this.score = 0;
     this.maxDist1 = 10;
