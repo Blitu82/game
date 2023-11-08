@@ -32,6 +32,7 @@ const capitals = [
 const geoGame = new GeoGame(capitals);
 
 const startButton = document.getElementById('start-button');
+const restartButton = document.getElementById('restart-button');
 const nexButton = document.getElementById('next-button');
 
 startButton.addEventListener('click', () => {
@@ -45,3 +46,7 @@ nexButton.addEventListener('click', () => {
 const pickedCities = geoGame.shuffleCapitals();
 
 geoGame.displayCity(pickedCities);
+
+restartButton.addEventListener('click', () => {
+  location.reload();
+});

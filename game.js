@@ -7,6 +7,7 @@ class GeoGame {
     this.map = document.getElementById('map');
     this.cityGuess = document.getElementById('city-guess');
     this.scoreElement = document.getElementById('score');
+    this.endScoreElement = document.getElementById('end-score');
     this.citiesClickedElement = document.getElementById('cities-clicked');
 
     this.capitals = capitals;
@@ -110,12 +111,16 @@ class GeoGame {
       this.cityIndex++;
 
       if (this.checkIfFinished()) {
-        return console.log('Game Over');
+        setTimeout(() => {
+          this.gameScreen.style.display = 'none';
+          this.gameEndScreen.style.display = 'block';
+          this.endScoreElement.innerHTML = this.score;
+        }, 1000);
       }
       map.removeEventListener('click', waitingForClick);
       setTimeout(() => {
         this.displayCity(pickedCities);
-      }, 3000);
+      }, 500);
     };
     map.addEventListener('click', waitingForClick);
   }
