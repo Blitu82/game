@@ -131,15 +131,12 @@ body {
   display: none;
   width: 100%;
   height: auto;
-  /* padding: 20px 0px; */
+
   position: relative;
   z-index: 0;
 }
 
 .image {
-  /* width: 100%; */
-  /* border: 2px solid black; */
-  /* background-color: black; */
   position: absolute;
   top: 0;
   left: 0;
@@ -157,7 +154,6 @@ body {
 }
 
 #city-name {
-  /* background-color: white; */
   background-image: url(img/start_screen.png);
   background-position: 25% -75%;
   border: 2px solid black;
@@ -184,6 +180,36 @@ body {
   border-radius: 50px;
   padding: 20px;
   z-index: 1;
+}
+
+#dot-city {
+  display: none;
+  position: absolute;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  background-color: transparent;
+  border: 3px solid red;
+  border-radius: 50%;
+  margin-top: -5px;
+  margin-left: -5px;
+}
+
+#dot-click {
+  display: none;
+  position: absolute;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  background-color: transparent;
+  border: 3px solid green;
+  border-radius: 50%;
+  margin-top: -5px;
+  margin-left: -5px;
 }
 
 /* ----------- Game End ------------ */

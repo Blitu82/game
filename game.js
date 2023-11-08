@@ -10,6 +10,8 @@ class GeoGame {
     this.scoreElement = document.getElementById('score');
     this.endScoreElement = document.getElementById('end-score');
     this.citiesClickedElement = document.getElementById('cities-clicked');
+    this.dotCity = document.getElementById('dot-city');
+    this.dotClick = document.getElementById('dot-click');
 
     this.capitals = capitals;
     this.cityIndex = 0;
@@ -53,6 +55,23 @@ class GeoGame {
     const deltaY = userClick[1] - pickedCity.coordinates[1];
     const dist = Math.sqrt(deltaX ** 2 + deltaY ** 2);
     return dist;
+  }
+
+  // Draw two circles. One for the city and one for the click
+
+  drawLocations(pickedCity, userClick) {
+    const cityX =
+      (pickedCity.coordinates[0] * this.map.width) / this.map.naturalWidth;
+    const cityY =
+      (pickedCity.coordinates[1] * this.map.height) / this.map.naturalHeight;
+
+    this.dotClick.style.display = 'block';
+    this.dotClick.style.top = userClick[1] + 'px';
+    this.dotClick.style.left = userClick[0] + 'px';
+
+    this.dotCity.style.display = 'block';
+    this.dotCity.style.top = cityY + 'px';
+    this.dotCity.style.left = cityX + 'px';
   }
 
   // Updates this.score and this.capitalsClicked
@@ -99,6 +118,8 @@ class GeoGame {
         `The distance to ${pickedCities[this.cityIndex].name} is ${distance}`
       );
 
+      this.drawLocations(pickedCities[this.cityIndex], [x, y]);
+
       this.scoreUpdate(distance);
 
       //console.log(`This is the score: ${this.score}`);
@@ -121,7 +142,7 @@ class GeoGame {
       map.removeEventListener('click', waitingForClick);
       setTimeout(() => {
         this.displayCity(pickedCities);
-      }, 500);
+      }, 3000);
     };
     map.addEventListener('click', waitingForClick);
   }
