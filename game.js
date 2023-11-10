@@ -12,6 +12,7 @@ class GeoGame {
     this.citiesClickedElement = document.getElementById('cities-clicked');
     this.dotCity = document.getElementById('dot-city');
     this.dotClick = document.getElementById('dot-click');
+    this.line = document.getElementById('line');
 
     this.capitals = capitals;
     this.cityIndex = 0;
@@ -72,7 +73,30 @@ class GeoGame {
     this.dotCity.style.display = 'block';
     this.dotCity.style.top = cityY + 'px';
     this.dotCity.style.left = cityX + 'px';
+
+    setTimeout(() => {
+      this.dotCity.style.display = 'none';
+      this.dotClick.style.display = 'none';
+    }, 2000);
   }
+
+  // Draw the line between the two points
+
+  // drawLine(pickedCity, userClick, dist) {
+  //   const cityX =
+  //     (pickedCity.coordinates[0] * this.map.width) / this.map.naturalWidth;
+  //   const cityY =
+  //     (pickedCity.coordinates[1] * this.map.height) / this.map.naturalHeight;
+
+  //   this.line.style.display = 'block';
+  //   this.line.style.top = cityY + 'px';
+  //   this.line.style.left = cityX + 'px';
+
+  //   const angle = Math.atan2(userClick[1] - cityY, userClick[0] - cityX);
+
+  //   this.line.style.transform = `rotate(${angle}rad)`;
+  //   this.line.style.width = dist + 'px';
+  // }
 
   // Updates this.score and this.capitalsClicked
 
@@ -120,13 +144,11 @@ class GeoGame {
 
       this.drawLocations(pickedCities[this.cityIndex], [x, y]);
 
+      // this.drawLine(pickedCities[this.cityIndex], [x, y], distance);
+
       this.scoreUpdate(distance);
 
-      //console.log(`This is the score: ${this.score}`);
       this.scoreElement.innerHTML = this.score;
-      //console.log(
-      //  `This is the number of Capitals Clicked: ${this.capitalsClicked}`
-      //);
 
       this.citiesClickedElement.innerHTML = this.capitalsClicked;
 
@@ -140,9 +162,10 @@ class GeoGame {
         }, 1000);
       }
       map.removeEventListener('click', waitingForClick);
+
       setTimeout(() => {
         this.displayCity(pickedCities);
-      }, 3000);
+      }, 2000);
     };
     map.addEventListener('click', waitingForClick);
   }
