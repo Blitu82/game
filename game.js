@@ -41,11 +41,18 @@ class GeoGame {
     this.gameScreen.style.display = 'block';
   }
 
+  filterCapitals(chosenContinent) {
+    const filteredArr = this.capitals.filter(city => {
+      return city.continent === chosenContinent;
+    });
+    return filteredArr;
+  }
+
   // Takes the original array with all the cities and puts 5 random ones in a new array
 
-  shuffleCapitals() {
-    if (this.capitals) {
-      const copyArr = JSON.parse(JSON.stringify(this.capitals));
+  shuffleCapitals(filteredCapitals) {
+    if (filteredCapitals) {
+      const copyArr = JSON.parse(JSON.stringify(filteredCapitals));
       copyArr.sort(() => Math.random() - 0.5);
       this.pickedCapitals = copyArr.slice(0, this.numberOfCapitals);
       return this.pickedCapitals;
@@ -82,24 +89,6 @@ class GeoGame {
       this.dotClick.style.display = 'none';
     }, 2000);
   }
-
-  // Draw the line between the two points
-
-  // drawLine(pickedCity, userClick, dist) {
-  //   const cityX =
-  //     (pickedCity.coordinates[0] * this.map.width) / this.map.naturalWidth;
-  //   const cityY =
-  //     (pickedCity.coordinates[1] * this.map.height) / this.map.naturalHeight;
-
-  //   this.line.style.display = 'block';
-  //   this.line.style.top = cityY + 'px';
-  //   this.line.style.left = cityX + 'px';
-
-  //   const angle = Math.atan2(userClick[1] - cityY, userClick[0] - cityX);
-
-  //   this.line.style.transform = `rotate(${angle}rad)`;
-  //   this.line.style.width = dist + 'px';
-  // }
 
   convertPixelsToKm(distance) {
     const distanceKm = (distance * 503.1) / 133.15;
