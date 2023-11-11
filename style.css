@@ -142,7 +142,6 @@ body {
   left: 0;
   width: 100%;
   height: auto;
-
   background-color: black;
   z-index: 0;
 }
@@ -223,6 +222,48 @@ body {
   border-top: 3px solid aqua;
   transform: rotate(0deg);
 } */
+
+#user-feedback {
+  display: none;
+  position: fixed;
+  width: 20%;
+  margin-left: 40%;
+  margin-right: 40%;
+  padding: 0 3%;
+  border-radius: 20px;
+
+  background: radial-gradient(
+    circle,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 0.16152398459383754) 0%,
+    rgba(0, 212, 255, 1) 100%
+  );
+
+  background-blend-mode: overlay;
+  /* background-color: rgba(204, 126, 142, 0.2); */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.distance {
+  border-bottom: 2px solid white;
+  margin-bottom: 0;
+  padding-bottom: 10px;
+  font-size: 50px;
+
+  text-align: center;
+  color: rgba(237, 164, 140, 1);
+  text-shadow: 2px 2px 4px rgba(246, 244, 243, 1);
+}
+
+.points {
+  font-size: 30px;
+  padding-top: 0;
+  text-align: center;
+  font-style: italic;
+  color: rgba(237, 164, 140, 1);
+  text-shadow: 2px 2px 4px rgba(246, 244, 243, 1);
+}
 
 /* ----------- Game End ------------ */
 

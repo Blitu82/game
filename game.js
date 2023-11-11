@@ -12,7 +12,10 @@ class GeoGame {
     this.citiesClickedElement = document.getElementById('cities-clicked');
     this.dotCity = document.getElementById('dot-city');
     this.dotClick = document.getElementById('dot-click');
-    this.line = document.getElementById('line');
+    // this.line = document.getElementById('line');
+    this.userFeedback = document.getElementById('user-feedback');
+    this.distanceFeeback = document.getElementsByClassName('distance');
+    this.pointsFeeback = document.getElementsByClassName('points');
 
     this.capitals = capitals;
     this.cityIndex = 0;
@@ -98,15 +101,38 @@ class GeoGame {
   //   this.line.style.width = dist + 'px';
   // }
 
+  convertPixelsToKm(distance) {
+    const distanceKm = (distance * 503.1) / 133.15;
+    return distanceKm.toFixed(1);
+  }
+
+  // Displays for the user the number of points he/she got and the distance from the actual target
+
+  displayUserFeedback(score, dist) {
+    this.userFeedback.style.display = 'block';
+    this.pointsFeeback[0].innerHTML = `+${score} points`;
+    this.distanceFeeback[0].innerHTML = `${this.convertPixelsToKm(dist)} Km`;
+
+    setTimeout(() => {
+      this.userFeedback.style.display = 'none';
+    }, 2000);
+  }
+
   // Updates this.score and this.capitalsClicked
 
   scoreUpdate(dist) {
     if (dist <= this.maxDist1) {
       this.score += 2;
+      this.capitalsClicked++;
+      return 2;
     } else if (dist <= this.maxDist2 && dist > this.maxDist1) {
       this.score += 1;
+      this.capitalsClicked++;
+      return 1;
+    } else {
+      this.capitalsClicked++;
+      return 0;
     }
-    this.capitalsClicked++;
   }
 
   // Checks if the user has gone through all cities in the array
@@ -123,7 +149,11 @@ class GeoGame {
   // Main function that runs through the array and asks the user to click in a given city.
 
   displayCity(pickedCities) {
-    this.cityGuess.innerHTML = `Where is ${pickedCities[this.cityIndex].name}?`;
+    if (this.cityIndex < pickedCities.length) {
+      this.cityGuess.innerHTML = `Where is ${
+        pickedCities[this.cityIndex].name
+      }?`;
+    }
 
     const waitingForClick = event => {
       const x = event.offsetX;
@@ -146,7 +176,9 @@ class GeoGame {
 
       // this.drawLine(pickedCities[this.cityIndex], [x, y], distance);
 
-      this.scoreUpdate(distance);
+      const updateTheScore = this.scoreUpdate(distance);
+
+      this.displayUserFeedback(updateTheScore, distance);
 
       this.scoreElement.innerHTML = this.score;
 
