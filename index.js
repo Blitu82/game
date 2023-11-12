@@ -47,9 +47,15 @@ const restartButton = document.getElementById('restart-button');
 const europeButton = document.getElementById('europe-button');
 const asiaButton = document.getElementById('asia-button');
 const startScreen = document.getElementById('game-intro');
+const inputOfCities = document.getElementById('dropdown-cities');
 
 startButton.addEventListener('click', () => {
   geoGame.start();
+});
+
+inputOfCities.addEventListener('change', function () {
+  geoGame.numberOfCapitals = parseInt(inputOfCities.value);
+  console.log(geoGame.numberOfCapitals);
 });
 
 europeButton.addEventListener('click', () => {

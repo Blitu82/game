@@ -12,7 +12,6 @@ class GeoGame {
     this.citiesClickedElement = document.getElementById('cities-clicked');
     this.dotCity = document.getElementById('dot-city');
     this.dotClick = document.getElementById('dot-click');
-    // this.line = document.getElementById('line');
     this.userFeedback = document.getElementById('user-feedback');
     this.distanceFeeback = document.getElementsByClassName('distance');
     this.pointsFeeback = document.getElementsByClassName('points');
@@ -20,7 +19,7 @@ class GeoGame {
     this.capitals = capitals;
     this.cityIndex = 0;
     this.pickedCapitals = [];
-    this.numberOfCapitals = 10;
+    this.numberOfCapitals = 5;
     this.capitalsClicked = 0;
     this.score = 0;
     this.maxDist1 = 10;
@@ -41,6 +40,8 @@ class GeoGame {
     this.gameScreen.style.display = 'block';
   }
 
+  // Based on the selected continent, this function filters the cities to choose from
+
   filterCapitals(chosenContinent) {
     const filteredArr = this.capitals.filter(city => {
       return city.continent === chosenContinent;
@@ -48,7 +49,7 @@ class GeoGame {
     return filteredArr;
   }
 
-  // Takes the original array with all the cities and puts 5 random ones in a new array
+  // Takes the original array with all the cities and puts 5/10 random ones in a new array
 
   shuffleCapitals(filteredCapitals) {
     if (filteredCapitals) {
@@ -89,6 +90,8 @@ class GeoGame {
       this.dotClick.style.display = 'none';
     }, 2000);
   }
+
+  // Converts pixels to Km
 
   convertPixelsToKm(distance) {
     const distanceKm = (distance * 503.1) / 133.15;
@@ -162,8 +165,6 @@ class GeoGame {
       );
 
       this.drawLocations(pickedCities[this.cityIndex], [x, y]);
-
-      // this.drawLine(pickedCities[this.cityIndex], [x, y], distance);
 
       const updateTheScore = this.scoreUpdate(distance);
 

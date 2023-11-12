@@ -69,7 +69,6 @@ body {
   flex-direction: row;
   /* align-items: center; */
   justify-content: space-around;
-  border: 1px solid black;
   width: 60%;
   height: 30%;
   margin-left: 20%;
@@ -95,6 +94,15 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
 }
 
+#europe-button:hover {
+  color: white;
+  background: linear-gradient(
+    0deg,
+    rgba(34, 100, 124, 0.8) 0%,
+    rgba(34, 100, 124, 0.8) 23%
+  );
+}
+
 #asia-button {
   display: block;
   width: 20%;
@@ -112,6 +120,15 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
 }
 
+#asia-button:hover {
+  color: white;
+  background: linear-gradient(
+    0deg,
+    rgba(34, 100, 124, 0.8) 0%,
+    rgba(34, 100, 124, 0.8) 23%
+  );
+}
+
 .instructions {
   display: flex;
   justify-content: center;
@@ -121,23 +138,23 @@ body {
   margin-right: 20%;
   height: 70%;
   width: 60%;
-  border: 1px solid black;
 }
 
 .instructions > h1 {
   font-size: 2rem;
   text-align: center;
   color: white;
-  border: 1px solid black;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
   background-color: rgba(34, 100, 124, 0.8);
   padding: 0;
+  margin-top: 10%;
 }
 
 .instructions > h2 {
   font-size: 2.5rem;
   text-align: center;
   color: white;
-  border: 1px solid black;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
   background-color: rgba(34, 100, 124, 0.8);
   padding: 10px;
 }
@@ -148,44 +165,24 @@ body {
   color: white;
   background-color: rgba(34, 100, 124, 0.8);
   list-style: none;
-  border: 1px solid black;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+  padding-right: 7%;
 }
 
 .instructions > p {
   font-size: 0.9rem;
   text-align: center;
-  border: 1px solid black;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
   color: white;
   background-color: rgba(34, 100, 124, 0.8);
   margin-bottom: 2px;
   width: max-content;
 }
 
-/* #next-button {
-  display: block;
-  width: 15%;
-  height: 7%;
-  text-align: center;
-  border-radius: 50px;
-  border: 3px solid rgba(34, 100, 124, 0.8);
-  color: black;
-  font-size: 1.2rem;
-  position: relative;
-  overflow: hidden;
-  background: transparent;
-  text-transform: uppercase;
-  margin-top: 5%;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-} */
-
-/* #next-button:hover {
-  color: white;
-  background: linear-gradient(
-    0deg,
-    rgba(34, 100, 124, 0.8) 0%,
-    rgba(34, 100, 124, 0.8) 23%
-  );
-} */
+#dropdown-cities {
+  background-color: rgba(237, 164, 140, 1);
+  border: 1px solid rgba(237, 164, 140, 1);
+}
 
 /* ----------- Game Container --------- */
 
@@ -275,18 +272,6 @@ body {
   margin-left: -7px;
 }
 
-/* #line {
-  display: none;
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 50px;
-  background-color: blue;
-  border-top: 3px solid aqua;
-  transform: rotate(0deg);
-} */
-
 #user-feedback {
   display: none;
   position: fixed;
@@ -313,7 +298,6 @@ body {
   margin-bottom: 0;
   padding-bottom: 10px;
   font-size: 50px;
-
   text-align: center;
   color: rgba(237, 164, 140, 1);
   text-shadow: 2px 2px 4px rgba(246, 244, 243, 1);
