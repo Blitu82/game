@@ -337,7 +337,7 @@ body {
   font-size: 10rem;
   text-align: center;
   color: white;
-  border: 1px solid black;
+
   background-color: rgba(34, 100, 124, 0.8);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
   padding: 30px 60px;
@@ -348,7 +348,7 @@ body {
 .game-over > p {
   font-size: 3rem;
   text-align: center;
-  border: 1px solid black;
+
   color: white;
   background-color: rgba(34, 100, 124, 0.8);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
