@@ -91,11 +91,16 @@ class GeoGame {
     }, 2000);
   }
 
-  // Converts pixels to Km
+  // Converts pixels to Km for Europe and Asia.
 
   convertPixelsToKm(distance) {
-    const distanceKm = (distance * 503.1) / 133.15;
-    return distanceKm.toFixed(1);
+    if (this.pickedCapitals[0].continent === 'Europe') {
+      const distanceKm = (distance * 503.1) / 133.15;
+      return distanceKm.toFixed(1);
+    } else if (this.pickedCapitals[0].continent === 'Asia') {
+      const distanceKm = (distance * 2092.3) / 409.09;
+      return distanceKm.toFixed(1);
+    }
   }
 
   // Displays for the user the number of points he/she got and the distance from the actual target
