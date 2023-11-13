@@ -40,57 +40,59 @@ const capitals = [
   { name: 'Seul', coordinates: [1371, 242], continent: 'Asia' },
 ];
 
-const geoGame = new GeoGame(capitals);
+window.onload = function () {
+  const geoGame = new GeoGame(capitals);
 
-const startButton = document.getElementById('start-button');
-const restartButton = document.getElementById('restart-button');
-const europeButton = document.getElementById('europe-button');
-const asiaButton = document.getElementById('asia-button');
-const startScreen = document.getElementById('game-intro');
-const inputOfCities = document.getElementById('dropdown-cities');
+  const startButton = document.getElementById('start-button');
+  const restartButton = document.getElementById('restart-button');
+  const europeButton = document.getElementById('europe-button');
+  const asiaButton = document.getElementById('asia-button');
+  const startScreen = document.getElementById('game-intro');
+  const inputOfCities = document.getElementById('dropdown-cities');
 
-startButton.addEventListener('click', () => {
-  geoGame.start();
-});
-
-inputOfCities.addEventListener('change', function () {
-  geoGame.numberOfCapitals = parseInt(inputOfCities.value);
-  console.log(geoGame.numberOfCapitals);
-});
-
-europeButton.addEventListener('click', () => {
-  const filteredCapitals = geoGame.filterCapitals('Europe');
-
-  geoGame.next();
-
-  geoGame.map.setAttribute('src', 'img/europe.png');
-
-  geoGame.citiesToClick.innerHTML = geoGame.numberOfCapitals;
-
-  const pickedCities = geoGame.shuffleCapitals(filteredCapitals);
-
-  geoGame.displayCity(pickedCities);
-
-  restartButton.addEventListener('click', () => {
-    location.reload();
+  startButton.addEventListener('click', () => {
+    geoGame.start();
   });
-});
 
-asiaButton.addEventListener('click', () => {
-  geoGame.filterCapitals('Asia');
-  const filteredCapitals = geoGame.filterCapitals('Asia');
-
-  geoGame.next();
-
-  geoGame.map.setAttribute('src', 'img/asia.png');
-
-  geoGame.citiesToClick.innerHTML = geoGame.numberOfCapitals;
-
-  const pickedCities = geoGame.shuffleCapitals(filteredCapitals);
-
-  geoGame.displayCity(pickedCities);
-
-  restartButton.addEventListener('click', () => {
-    location.reload();
+  inputOfCities.addEventListener('change', function () {
+    geoGame.numberOfCapitals = parseInt(inputOfCities.value);
+    console.log(geoGame.numberOfCapitals);
   });
-});
+
+  europeButton.addEventListener('click', () => {
+    const filteredCapitals = geoGame.filterCapitals('Europe');
+
+    geoGame.next();
+
+    geoGame.map.setAttribute('src', 'img/europe.png');
+
+    geoGame.citiesToClick.innerHTML = geoGame.numberOfCapitals;
+
+    const pickedCities = geoGame.shuffleCapitals(filteredCapitals);
+
+    geoGame.displayCity(pickedCities);
+
+    restartButton.addEventListener('click', () => {
+      location.reload();
+    });
+  });
+
+  asiaButton.addEventListener('click', () => {
+    geoGame.filterCapitals('Asia');
+    const filteredCapitals = geoGame.filterCapitals('Asia');
+
+    geoGame.next();
+
+    geoGame.map.setAttribute('src', 'img/asia.png');
+
+    geoGame.citiesToClick.innerHTML = geoGame.numberOfCapitals;
+
+    const pickedCities = geoGame.shuffleCapitals(filteredCapitals);
+
+    geoGame.displayCity(pickedCities);
+
+    restartButton.addEventListener('click', () => {
+      location.reload();
+    });
+  });
+};
